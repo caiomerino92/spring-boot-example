@@ -1,0 +1,11 @@
+### Project
+logs/
+*.war
+*.iml
+
+## Maven
+.mvn
+target/
+
+# User-specific stuff
+.idea
