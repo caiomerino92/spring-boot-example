@@ -10,6 +10,7 @@ public class RealStateFund extends AbstractEntity {
 
     @Id
     @GeneratedValue
+    @Column(name = "ID")
     private Long id;
 
     @Column(name = "TICKET_NAME")
@@ -18,8 +19,8 @@ public class RealStateFund extends AbstractEntity {
     @Column(name = "TARGET_AUDIENCE")
     private String targetAudience;
 
-    @Column(name = "TYPE")
-    private String type;
+    @Column(name = "TICKET_TYPE")
+    private String ticketType;
 
     @Column(name = "ADMINISTRATOR")
     private String administrator;
