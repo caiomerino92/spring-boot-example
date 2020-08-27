@@ -40,4 +40,8 @@ public class RealStateFundService {
                 .map(RealStateFundParser::parse)
                 .collect(Collectors.toList());
     }
+
+    public void deleteById(Long id) throws Exception {
+        realStateFundRepository.deleteById(id);
+    }
 }

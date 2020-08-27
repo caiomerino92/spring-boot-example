@@ -39,4 +39,13 @@ public class RealStateFundController {
     public List<RealStateFundResponse> findAll() {
         return realStateFundService.findAll();
     }
+
+    @DeleteMapping
+    public void deleteById(@PathVariable Long id) {
+        try {
+            realStateFundService.deleteById(id);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Real State Funds not found.", e);
+        }
+    }
 }
