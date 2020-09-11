@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,5 +44,20 @@ public class RealStateFundService {
 
     public void deleteById(Long id) throws Exception {
         realStateFundRepository.deleteById(id);
+    }
+
+    public RealStateFundResponse update(Long id, RealStateFundRequest realStateFundRequest) throws Exception {
+        Optional<RealStateFund> realStateFundFounded =  realStateFundRepository.findById(id);
+
+        if (realStateFundFounded.isPresent()) {
+            RealStateFund realStateFund = RealStateFundParser.parse(realStateFundRequest);
+            return RealStateFundParser.parse(realStateFundRepository.save(realStateFund));
+        } else {
+            throw new Exception("RealStateFund not found with id " + id);
+        }
+    }
+
+    public void deleteAll() {
+        realStateFundRepository.deleteAll();
     }
 }

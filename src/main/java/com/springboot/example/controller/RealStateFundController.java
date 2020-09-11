@@ -22,11 +22,12 @@ public class RealStateFundController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody RealStateFundRequest realStateFundRequest) {
         realStateFundService.save(realStateFundRequest);
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public RealStateFundResponse findById(@PathVariable Long id) {
         try {
             return realStateFundService.findById(id);
@@ -40,12 +41,26 @@ public class RealStateFundController {
         return realStateFundService.findAll();
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         try {
             realStateFundService.deleteById(id);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Real State Funds not found.", e);
         }
+    }
+
+    @PutMapping
+    public RealStateFundResponse update(@PathVariable Long id, @RequestBody RealStateFundRequest realStateFundRequest) {
+        try {
+            return realStateFundService.save(realStateFundRequest);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Real State Funds not found.", e);
+        }
+    }
+
+    @DeleteMapping
+    public void deleteAll() {
+        realStateFundService.deleteAll();
     }
 }
