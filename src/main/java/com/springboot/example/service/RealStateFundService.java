@@ -1,6 +1,5 @@
 package com.springboot.example.service;
 
-import com.springboot.example.controller.RealStateFundController;
 import com.springboot.example.model.entity.RealStateFund;
 import com.springboot.example.model.request.RealStateFundRequest;
 import com.springboot.example.model.response.RealStateFundResponse;
