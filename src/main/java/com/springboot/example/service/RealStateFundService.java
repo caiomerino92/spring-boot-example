@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Service
 public class RealStateFundService {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(RealStateFundService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RealStateFundService.class);
 
     private final IRealStateFundRepository realStateFundRepository;
 
