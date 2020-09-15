@@ -69,10 +69,17 @@ public class RealStateFundController {
         LOGGER.debug("RealStateFundController.update id={}", id);
 
         try {
-            return realStateFundService.save(realStateFundRequest);
+            return realStateFundService.update(id, realStateFundRequest);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Real State Funds not found.", e);
         }
+    }
+
+    @PatchMapping
+    public RealStateFundResponse update(@RequestBody RealStateFundRequest realStateFundRequest) {
+        LOGGER.debug("RealStateFundController.update partial");
+
+        return realStateFundService.save(realStateFundRequest);
     }
 
     @DeleteMapping
